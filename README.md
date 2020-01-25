@@ -16,53 +16,25 @@ or
 ```
 npm i menu-hamburguer
 ```
-#### Via CDN
-```
-<script type="text/javascript" src="https://unpkg.com/menu-hamburger@2.0.0/lib/menu-hamburger.min.js"></script>
-```
 # Usage
 
-### HTML
-``` html 
-<!DOCTYPE html>
-<html>
-<head>
-  <title>A Simple Menu Hamburger</title>
-  <script src="https://unpkg.com/menu-hamburger@2.0.0/lib/menu-hamburger.min.js"></script>
-</head>
-<body>
-  <div id="menu-wrapper"></div>
-  <script type="text/javascript">
-  	//Js code here
-  </script>
-</body>
-</html>
-``` 
-### JavaScript - CDN
-``` javascript
-const rootElement = document.getElementById("menu-wrapper");
-const menu = MenuHamburger.initialize({
-  rootElement,
-  size: 50,
-  backgroundColor: "#f2f2f2",
-});
-```
-### JavaScript - Package
-``` javascript
+### React - JSX
+``` jsx
+import React from "react";
+
 import MenuHamburger from "menu-hamburger";
 
-const rootElement = document.getElementById("menu-wrapper");
-const menu = MenuHamburger.initialize({
-  rootElement,
-  size: 50,
-  backgroundColor: "#f1f1f1",
-});
+export default function MyAwesomeComponent() {
+  return(
+    <MenuHamburger config={...yourConfig} />
+  )
+}
+    
 ```
 # Config
 Configure Menu Hamburger by passing an options object as the argument of the initialize method. Default values are:
-``` javascript
-const menu = MenuHamburger.initialize({
-  rootElement: null,
+``` jsx
+<MenuHamburger config={{
   size: 30,
   lineWidth: 3,
   menuClassName: null,
@@ -72,15 +44,8 @@ const menu = MenuHamburger.initialize({
   borderRadius: '8px',
   iconColor: '#444',
   initOpened: false
-});
+}} />
 ```
-### `rootElement`
-> Receives the HTML container element from the menu
-
-required: `true`  
-type: `HTMLNode`  
-Allowed values: `any HTML Node`  
-Default value: `null`
 
 ### `size`
 > Receives the Menu Hamburger width and height
@@ -156,12 +121,20 @@ Default value: `false`
 
 # API
 Menu exposes API methods that can be used to control the Menu externally. Example usage:
-``` javascript
-const menu = MenuHamburger.initialize({ ...yourConfigHere });
+``` jsx
+import React, { useState, useEffect } from "react";
 
-menu.toggle();
-menu.open();
-menu.close();
+import MenuHamburger from "menu-hamburger";
+
+export default function MyAwesomeComponent() {
+  const [menu, setMenu] = useState(null)
+  return(
+    <>
+      <MenuHamburger menuRef={setMenu} config={...yourConfig} />
+      <button onClick={() => menu && menu.toggle()}>Touch me to toggle menu</button>
+    </>
+  )
+}
 ```
 
 ### `toggle`
@@ -178,12 +151,24 @@ menu.close();
 
 # Add Event Listeners
 Menu exposes custom events that can be hooked on to. Example usage:
-``` javascript
-const menu = MenuHamburger.initialize({ ...yourConfigHere });
+``` jsx
+import React, { useState, useEffect } from "react";
 
-menu.on("toggle", () => {
-  console.log("Your imagination is the limit")
-});
+import MenuHamburger from "menu-hamburger";
+
+export default function MyAwesomeComponent() {
+  const [menu, setMenu] = useState(null)
+  useEffect(() => {
+    if(menu){
+      menu.on("toggle", () => {
+        console.log("The menu state has changed")
+      })
+    }
+  }, [])
+  return(
+    <MenuHamburger menuRef={setMenu} config={...yourConfig} />
+  )
+}
 ```
 
 ### `init`
@@ -203,16 +188,27 @@ menu.on("toggle", () => {
 
 # Remove Event Listeners
 The menu exposes custom events that can be used to remove an event listener. Example of use:
-``` javascript
-const menu = MenuHamburger.initialize({ ...yourConfigHere });
+``` jsx
+import React, { useState, useEffect } from "react";
 
-menu.on("toggle", () => {
-  console.log("I'm adding a listener to the toggle event")
-});
-menu.off("toggle", () => {
-  console.log("And right down here I already removed this event, so nothing will happen")
-});
+import MenuHamburger from "menu-hamburger";
 
+export default function MyAwesomeComponent() {
+  const [menu, setMenu] = useState(null)
+  useEffect(() => {
+    if(menu){
+      menu.on("toggle", () => {
+        console.log("An event listener has been added")
+      })
+      menu.off("toggle", () => {
+        console.log("And down here I removed the event listener, so nothing will happen ._.")
+      })
+    }
+  }, [])
+  return(
+    <MenuHamburger menuRef={setMenu} config={...yourConfig} />
+  )
+}
 ```
 
 ### `init`
