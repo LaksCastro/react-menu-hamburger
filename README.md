@@ -1,68 +1,231 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Menu Hamburger
+A clean, simple and easy to use library
 
-## Available Scripts
+# PrintScreen
+![Opened](https://i.imgur.com/x0IquWe.png)
+![Animating](https://i.imgur.com/frVRogM.png)
+![Animating](https://i.imgur.com/85xSR2q.png)
+![Closed](https://i.imgur.com/J1iVw8F.png)
 
-In the project directory, you can run:
+# Installation
+#### Via packages
+```
+yarn add menu-hamburger 
+```
+or
+```
+npm i menu-hamburguer
+```
+#### Via CDN
+```
+<script type="text/javascript" src="https://unpkg.com/menu-hamburger@2.0.0/lib/menu-hamburger.min.js"></script>
+```
+# Usage
 
-### `yarn start`
+### HTML
+``` html 
+<!DOCTYPE html>
+<html>
+<head>
+  <title>A Simple Menu Hamburger</title>
+  <script src="https://unpkg.com/menu-hamburger@2.0.0/lib/menu-hamburger.min.js"></script>
+</head>
+<body>
+  <div id="menu-wrapper"></div>
+  <script type="text/javascript">
+  	//Js code here
+  </script>
+</body>
+</html>
+``` 
+### JavaScript - CDN
+``` javascript
+const rootElement = document.getElementById("menu-wrapper");
+const menu = MenuHamburger.initialize({
+  rootElement,
+  size: 50,
+  backgroundColor: "#f2f2f2",
+});
+```
+### JavaScript - Package
+``` javascript
+import MenuHamburger from "menu-hamburger";
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+const rootElement = document.getElementById("menu-wrapper");
+const menu = MenuHamburger.initialize({
+  rootElement,
+  size: 50,
+  backgroundColor: "#f1f1f1",
+});
+```
+# Config
+Configure Menu Hamburger by passing an options object as the argument of the initialize method. Default values are:
+``` javascript
+const menu = MenuHamburger.initialize({
+  rootElement: null,
+  size: 30,
+  lineWidth: 3,
+  menuClassName: null,
+  menuIconClassName: null,
+  transition: 'all .2s ease-in-out',
+  backgroundColor: 'white',
+  borderRadius: '8px',
+  iconColor: '#444',
+  initOpened: false
+});
+```
+### `rootElement`
+> Receives the HTML container element from the menu
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+required: `true`  
+type: `HTMLNode`  
+Allowed values: `any HTML Node`  
+Default value: `null`
 
-### `yarn test`
+### `size`
+> Receives the Menu Hamburger width and height
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+required: `false`  
+type: `number`  
+Allowed values: `any number`  
+Default value: `30`
 
-### `yarn build`
+### `lineWidth`
+> Receives the Menu line width
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+required: `false`  
+type: `number`  
+Allowed values: `any number`  
+Default value: `3`
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+### `menuClassName`
+> Receives the class to apply on the Menu Node
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+required: `false`  
+type: `string`  
+Allowed values: `any valid HTML class string`  
+Default value: `null`
 
-### `yarn eject`
+### `menuIconClassName`
+> Receives the class to apply on the Menu Node Icon
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+required: `false`  
+type: `string`  
+Allowed values: `any valid HTML class string`  
+Default value: `null`
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### `transition`
+> Receives the custom Css transition
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+required: `false`  
+type: `string`  
+Allowed values: `any valid value to Css property transition`  
+Default value: `all .2s ease-in-out`
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### `backgroundColor`
+> Receive the Background Color of Menu
 
-## Learn More
+required: `false`  
+type: `string`  
+Allowed values: `any Css color`  
+Default value: `white`
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### `borderRadius`
+> Receive the Menu border radius
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+required: `false`  
+type: `string`  
+Allowed values: `any Css size`  
+Default value: `8px`
 
-### Code Splitting
+### `iconColor`
+> Receive the Menu Icon color
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+required: `false`  
+type: `string`  
+Allowed values: `any Css color`  
+Default value: `#444`
 
-### Analyzing the Bundle Size
+### `initOpened`
+> Defines whether the menu should start open or closed, where true means start open and false means start closed
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+required: `false`  
+type: `boolean`  
+Allowed values: `true` `false`  
+Default value: `false`
 
-### Making a Progressive Web App
+# API
+Menu exposes API methods that can be used to control the Menu externally. Example usage:
+``` javascript
+const menu = MenuHamburger.initialize({ ...yourConfigHere });
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+menu.toggle();
+menu.open();
+menu.close();
+```
 
-### Advanced Configuration
+### `toggle`
+> Opens the Menu if it is closed or closes if it is open
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+### `open`
+> Open Menu
 
-### Deployment
+### `close`
+> Close Menu
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+### `destroy`
+> Destroys the current instance of the Menu
 
-### `yarn build` fails to minify
+# Add Event Listeners
+Menu exposes custom events that can be hooked on to. Example usage:
+``` javascript
+const menu = MenuHamburger.initialize({ ...yourConfigHere });
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+menu.on("toggle", () => {
+  console.log("Your imagination is the limit")
+});
+```
+
+### `init`
+> This function is called when the Menu is initialized
+
+### `toggle`
+> This function is called when the Menu is closed or opened
+
+### `open`
+> This function is called when the Menu is opened
+
+### `close`
+> This function is called when the Menu is closed
+
+### `destroy`
+> This function is called when the Menu is destroyed
+
+# Remove Event Listeners
+The menu exposes custom events that can be used to remove an event listener. Example of use:
+``` javascript
+const menu = MenuHamburger.initialize({ ...yourConfigHere });
+
+menu.on("toggle", () => {
+  console.log("I'm adding a listener to the toggle event")
+});
+menu.off("toggle", () => {
+  console.log("And right down here I already removed this event, so nothing will happen")
+});
+
+```
+
+### `init`
+> Remove the init event listener
+
+### `toggle`
+> Remove the toggle event listener
+
+### `open`
+> Remove the open event listener
+
+### `close`
+> Remove the close event listener
+
+### `destroy`
+> Remove the destroy event listener
