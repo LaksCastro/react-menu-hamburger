@@ -3,20 +3,20 @@ import React, { useEffect, useRef } from "react";
 import MenuHamburger from "menu-hamburger";
 
 export default function MenuWrapper(props) {
-    const { config = {}, refMenu } = props;
+    const { config = {}, menuRef } = props;
 
-    const menuRef = useRef(null);
+    const menuNode = useRef(null);
 
     useEffect(() => {
-        if (menuRef.current) {
+        if (menuNode.current) {
             const menu = MenuHamburger.initialize({
                 rootElement: menuRef.current,
                 ...config
             });
-            if (!refMenu) return;
-            refMenu(menu);
+            if (!menuRef) return;
+            menuRef(menu);
         }
     }, []);
 
-    return <div ref={menuRef}></div>;
+    return <div ref={menuNode}></div>;
 }
