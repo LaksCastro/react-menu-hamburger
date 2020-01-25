@@ -10,7 +10,7 @@ export default function MenuWrapper(props) {
     useEffect(() => {
         if (menuNode.current) {
             const menu = MenuHamburger.initialize({
-                rootElement: menuRef.current,
+                rootElement: menuNode.current,
                 ...config
             });
             if (!menuRef) return;
