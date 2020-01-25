@@ -25,9 +25,7 @@ import React from "react";
 import MenuHamburger from "react-menu-hamburger";
 
 export default function MyAwesomeComponent() {
-  return(
-    <MenuHamburger config={...yourConfig} />
-  )
+  return <MenuHamburger config={...yourConfig} />
 }
     
 ```
