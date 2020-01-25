@@ -22,7 +22,7 @@ npm i react-menu-hamburguer
 ``` jsx
 import React from "react";
 
-import MenuHamburger from "menu-hamburger";
+import MenuHamburger from "react-menu-hamburger";
 
 export default function MyAwesomeComponent() {
   return(
@@ -124,7 +124,7 @@ Menu exposes API methods that can be used to control the Menu externally. Exampl
 ``` jsx
 import React, { useState, useEffect } from "react";
 
-import MenuHamburger from "menu-hamburger";
+import MenuHamburger from "react-menu-hamburger";
 
 export default function MyAwesomeComponent() {
   const [menu, setMenu] = useState(null)
@@ -154,7 +154,7 @@ Menu exposes custom events that can be hooked on to. Example usage:
 ``` jsx
 import React, { useState, useEffect } from "react";
 
-import MenuHamburger from "menu-hamburger";
+import MenuHamburger from "react-menu-hamburger";
 
 export default function MyAwesomeComponent() {
   const [menu, setMenu] = useState(null)
@@ -191,7 +191,7 @@ The menu exposes custom events that can be used to remove an event listener. Exa
 ``` jsx
 import React, { useState, useEffect } from "react";
 
-import MenuHamburger from "menu-hamburger";
+import MenuHamburger from "react-menu-hamburger";
 
 export default function MyAwesomeComponent() {
   const [menu, setMenu] = useState(null)
