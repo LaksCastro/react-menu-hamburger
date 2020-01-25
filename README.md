@@ -10,11 +10,11 @@ A clean, simple and easy to use library
 # Installation
 #### Via packages
 ```
-yarn add menu-hamburger 
+yarn add react-menu-hamburger 
 ```
 or
 ```
-npm i menu-hamburguer
+npm i react-menu-hamburguer
 ```
 # Usage
 
