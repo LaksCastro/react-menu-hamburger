@@ -1,3 +1,3 @@
-import MenuHamburger from "./lib/components/MenuHamburger";
+import MenuHamburger from "./components/MenuHamburger";
 
 export default MenuHamburger;
