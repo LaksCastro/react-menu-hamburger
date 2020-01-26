@@ -8,7 +8,6 @@ A clean, simple and easy to use library
 ![Closed](https://i.imgur.com/J1iVw8F.png)
 
 # Installation
-#### Via packages
 ```
 yarn add react-menu-hamburger 
 ```
