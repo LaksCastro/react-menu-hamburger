@@ -27,7 +27,7 @@ import React from "react";
 import MenuHamburger from "react-menu-hamburger";
 
 export default function MyAwesomeComponent() {
-  return <MenuHamburger config={...yourConfig} />
+  return <MenuHamburger config={{...yourConfig}} />
 }
     
 ```
@@ -130,7 +130,7 @@ export default function MyAwesomeComponent() {
   const [menu, setMenu] = useState(null)
   return(
     <>
-      <MenuHamburger menuRef={setMenu} config={...yourConfig} />
+      <MenuHamburger menuRef={setMenu} config={{...yourConfig}} />
       <button onClick={() => menu && menu.toggle()}>Touch me to toggle menu</button>
     </>
   )
@@ -166,7 +166,7 @@ export default function MyAwesomeComponent() {
     }
   }, [])
   return(
-    <MenuHamburger menuRef={setMenu} config={...yourConfig} />
+    <MenuHamburger menuRef={setMenu} config={{...yourConfig}} />
   )
 }
 ```
@@ -206,7 +206,7 @@ export default function MyAwesomeComponent() {
     }
   }, [])
   return(
-    <MenuHamburger menuRef={setMenu} config={...yourConfig} />
+    <MenuHamburger menuRef={setMenu} config={{...yourConfig}} />
   )
 }
 ```
