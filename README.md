@@ -152,7 +152,7 @@ export default function MyAwesomeComponent() {
 # Add Event Listeners
 Menu exposes custom events that can be hooked on to. Example usage:
 ``` jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import MenuHamburger from "react-menu-hamburger";
 
